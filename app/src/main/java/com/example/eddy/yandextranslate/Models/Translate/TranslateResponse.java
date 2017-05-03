@@ -1,12 +1,11 @@
-package com.example.eddy.yandextranslate;
+package com.example.eddy.yandextranslate.Models.Translate;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import java.util.ArrayList;
 
 
-public class Response implements Parcelable {
+public class TranslateResponse implements Parcelable {
 
     private int code;
     private String lang;
@@ -36,7 +35,7 @@ public class Response implements Parcelable {
         this.text = text;
     }
 
-    protected Response(Parcel in) {
+    protected TranslateResponse(Parcel in) {
         code = in.readInt();
         lang = in.readString();
         text = in.createStringArrayList();
@@ -54,15 +53,15 @@ public class Response implements Parcelable {
         return 0;
     }
 
-    public static final Creator<Response> CREATOR = new Creator<Response>() {
+    public static final Creator<TranslateResponse> CREATOR = new Creator<TranslateResponse>() {
         @Override
-        public Response createFromParcel(Parcel in) {
-            return new Response(in);
+        public TranslateResponse createFromParcel(Parcel in) {
+            return new TranslateResponse(in);
         }
 
         @Override
-        public Response[] newArray(int size) {
-            return new Response[size];
+        public TranslateResponse[] newArray(int size) {
+            return new TranslateResponse[size];
         }
     };
 }
