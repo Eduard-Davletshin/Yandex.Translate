@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     TextView translated_text;
     @BindView(R.id.my_toolbar)
     Toolbar toolbar;
-    @BindView(R.id.dictionary)
-    ListView dictionary_listview;
+//    @BindView(R.id.dictionary)
+//    ListView dictionary_listview;
     TranslateResponse translateResponse;
     TranslatorAsyncTask translatorAsyncTask;
     DictionaryResponse dictionaryResponse;
