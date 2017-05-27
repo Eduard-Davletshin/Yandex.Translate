@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-class Syn implements Parcelable {
+public class Syn implements Parcelable {
     public static final Creator<Syn> CREATOR = new Creator<Syn>() {
         @Override
         public Syn createFromParcel(Parcel in) {

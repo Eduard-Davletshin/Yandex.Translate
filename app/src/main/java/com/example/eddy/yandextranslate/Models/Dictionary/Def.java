@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 
-class Def implements Parcelable {
+public class Def implements Parcelable {
 
     public static final Creator<Def> CREATOR = new Creator<Def>() {
         @Override

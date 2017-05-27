@@ -3,7 +3,7 @@ package com.example.eddy.yandextranslate.Models.Dictionary;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-class Mean implements Parcelable {
+public class Mean implements Parcelable {
     public static final Creator<Mean> CREATOR = new Creator<Mean>() {
         @Override
         public Mean createFromParcel(Parcel in) {

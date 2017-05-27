@@ -3,7 +3,7 @@ package com.example.eddy.yandextranslate.Models.Dictionary;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-class Tr_ex implements Parcelable {
+public class Tr_ex implements Parcelable {
     public static final Creator<Tr_ex> CREATOR = new Creator<Tr_ex>() {
         @Override
         public Tr_ex createFromParcel(Parcel in) {
