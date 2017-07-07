@@ -19,8 +19,8 @@ public class TranslateResponse implements Parcelable {
             return new TranslateResponse[size];
         }
     };
-    private int code;
-    private String lang;
+    private int               code;
+    private String            lang;
     private ArrayList<String> text;
 
     private TranslateResponse(Parcel in) {

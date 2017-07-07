@@ -7,7 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,23 +27,28 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String text_to_translate;
-    @BindView(R.id.input_text)
-    EditText input_text;
-    @BindView(R.id.translated_text)
-    TextView translated_text;
-    @BindView(R.id.my_toolbar)
-    Toolbar toolbar;
+    public static                   String   text_to_translate;
+    @BindView(R.id.input_text)      EditText input_text;
+    @BindView(R.id.translated_text) TextView translated_text;
+    @BindView(R.id.main_toolbar)
+    Toolbar        toolbar;
     @BindView(R.id.pos)
-    TextView pos;
+    TextView       pos;
     @BindView(R.id.syn)
-    TextView syn;
+    TextView       syn;
     @BindView(R.id.mean)
-    TextView mean;
+    TextView       mean;
     @BindView(R.id.ex)
-    TextView ex;
-
-    TranslateResponse translateResponse;
+    TextView       ex;
+    @BindView(R.id.input_layout)
+    RelativeLayout input_layout;
+    @BindView(R.id.first_language_text)
+    TextView       first_language_text;
+    @BindView(R.id.second_language_text)
+    TextView       second_language_text;
+    @BindView(R.id.erase_image)
+    ImageView      erase_image;
+    TranslateResponse  translateResponse;
     DictionaryResponse dictionaryResponse;
     @Nullable
     TranslatorAsyncTask translatorAsyncTask;
@@ -64,14 +72,14 @@ public class MainActivity extends AppCompatActivity {
                 text_to_translate = input_text.getText().toString();
                 if (!text_to_translate.equals("")) {
                     if (translatorAsyncTask != null && translatorAsyncTask.getStatus() == AsyncTask
-                            .Status.RUNNING) {
+                        .Status.RUNNING) {
                         translatorAsyncTask.cancel(true);
                         translateText();
                     } else {
                         translateText();
                     }
                     if (dictionaryAsyncTask != null && dictionaryAsyncTask.getStatus() == AsyncTask
-                            .Status.RUNNING) {
+                        .Status.RUNNING) {
                         dictionaryAsyncTask.cancel(true);
                         getDictionaryForText();
                     } else {
@@ -82,6 +90,28 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+            }
+        });
+
+
+        input_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    input_layout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                    input_layout.setPadding(5, 5, 5, 5);
+                } else {
+                    input_layout.setBackgroundColor(getResources().getColor(R.color.borders));
+                    input_layout.setPadding(2, 2, 2, 2);
+                }
+            }
+        });
+
+        erase_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                input_text.setText("");
+                translated_text.setText("");
             }
         });
     }
@@ -100,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         });
         translatorAsyncTask.execute();
     }
+
 
     public void getDictionaryForText() {
         dictionaryAsyncTask = new DictionaryAsyncTask((new DictionaryCallback() {

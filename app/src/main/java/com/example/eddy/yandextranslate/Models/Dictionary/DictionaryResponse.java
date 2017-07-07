@@ -19,10 +19,10 @@ public class DictionaryResponse implements Parcelable {
         }
     };
 
-    private Head head;
+    private Head           head;
     private ArrayList<Def> def;
-    private Integer code;
-    private String message;
+    private Integer        code;
+    private String         message;
 
     private DictionaryResponse(Parcel in) {
         def = in.createTypedArrayList(Def.CREATOR);

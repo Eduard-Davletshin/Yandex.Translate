@@ -1,44 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     tools:context="com.example.eddy.yandextranslate.MainActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/my_toolbar"
+        android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/toolbar" />
+        android:background="@color/toolbar"
+        app:contentInsetStart="0dp"
+        app:titleTextAppearance="@color/borders">
 
-    <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="13">
+
+            <TextView
+                android:id="@+id/first_language_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="6" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@mipmap/arrows" />
+
+            <TextView
+                android:id="@+id/second_language_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="6" />
+
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/colorPrimary">
+        android:background="@color/borders"
+        android:padding="1dp">
 
-        <EditText
-            android:id="@+id/input_text"
+        <RelativeLayout
+            android:id="@+id/input_layout_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:background="@color/background"
-            android:gravity="top"
-            android:minHeight="130dp" />
+            android:background="@color/background">
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/input_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@color/background"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="top"
+                android:inputType="text"
+                android:labelFor="@+id/input_text"
+                android:minHeight="130dp" />
+
+            <ImageView
+                android:id="@+id/erase_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/input_text"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:src="@mipmap/erase"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/translated_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:textSize="16dp" />
+        android:textColor="#000000"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/dictionary_header"
@@ -53,34 +110,46 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="250dp"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/dictionary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:orientation="vertical"
             android:scrollbars="vertical">
 
             <TextView
                 android:id="@+id/pos"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="12sp"
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/syn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/mean"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/ex"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="12sp" />
+
         </LinearLayout>
 
     </ScrollView>
